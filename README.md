@@ -11,7 +11,7 @@ Note that the present version does create csv files, which you need to store in 
 Next on the TODO list:
 
 - instead of csv, make it a local MySQL dbase; and later a remote one.
-CHECK: - create a window which appears after you hit the submit button, as to avoid 2 times submittng the same results.
+- CHECK: - create a window which appears after you hit the submit button, as to avoid 2 times submittng the same results.
 
 
 
