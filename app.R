@@ -96,14 +96,17 @@ shinyApp(
       # action to take when submit button is pressed
       observeEvent(input$submit, {
         saveData(formData())
-        shinyjs::reset("form")
-        shinyjs::hide("form")
+        shinyjs::hide("submit")
         shinyjs::show("thankyou_msg")
       })
       
       observeEvent(input$submit_another, {
-        shinyjs::reset("form")
-        shinyjs::show("form")
+        shinyjs::reset("name")
+        shinyjs::reset("gewas")
+        shinyjs::reset("Row")
+        shinyjs::reset("VangNr")
+        shinyjs::reset("count")
+        shinyjs::show("submit")
         shinyjs::hide("thankyou_msg")
       })    
     })
