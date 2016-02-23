@@ -14,6 +14,6 @@ and
 http://www.r-bloggers.com/rstudio-and-github/
 
 
+** setup credential on windows, as to avoid typing github login and pwd everytime when you push
+http://stat545-ubc.github.io/git06_credential-caching.html
 
-
-adding a line
