@@ -4,6 +4,7 @@ Monitoring van plagen en nuttigen in de serre
 
 This app is intended for practical use of monitoring pest species in greenhouses.
 I would like to thank Dean Attali for his excellent tutorial on which the first commits of this app were based.
+see: http://deanattali.com/2015/06/14/mimicking-google-form-shiny/
 
 
 **How to connect RStudio with GITHUB, after GIT has been installed already**
