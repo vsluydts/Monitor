@@ -23,8 +23,8 @@ labelMandatory <- function(label) {
   )
 }
 
-appCSS <-
-  ".mandatory_star { color: red; }"
+#CSS to use in app
+appCSS <-".mandatory_star { color: red; }"
 
 ####Define the fields that need to be saved in the database#####
 
@@ -44,19 +44,22 @@ shinyApp(
     #this is where the user interface is created
     titlePanel("Monitoring van plaagsoorten in een serre"),
  
-    div(
-      id = "form",
-      
+    div(id = "form"),
       selectInput("name", labelMandatory("Naam van de waarnemer"), c("","Els",  "Rob", "Amber")),
-      selectInput("gewas", labelMandatory("Gewas in de serre"), c("Tomaten",  "Paprika's", "Ander")),
+      selectInput("gewas", labelMandatory("Gewas in de serre"), c("","Tomaten",  "Paprika's", "Ander")),
       sliderInput("Row", "Rijnummer", 0, 100, 2, ticks = T),
       sliderInput("VangNr", "Vangplaat of Paal nummer binnen een rij", 0,30,2,ticks=T),
       selectInput("plagen", "Plaagsoort die geteld wordt", c("Witte Vlieg",  "Spint", "Ander")),
       numericInput("count", label = "Aantal", value = 1),
       #textInput("name", "Naam van de andere soort", ""),
-      actionButton("submit", "Submit", class = "btn-primary")
+      actionButton("submit", "Submit", class = "btn-primary"),
+    shinyjs::hidden(div(
+      id="thankyou_msg",
+      h2("Bedankt, uw telling is opgeslagen"),
+      h3(actionLink("submit_another", "Vul een nieuwe telling in"))
+          )
       )
-  ),
+    ),
   
   server = function(input, output, session) {
     
@@ -93,7 +96,16 @@ shinyApp(
       # action to take when submit button is pressed
       observeEvent(input$submit, {
         saveData(formData())
+        shinyjs::reset("form")
+        shinyjs::hide("form")
+        shinyjs::show("thankyou_msg")
       })
+      
+      observeEvent(input$submit_another, {
+        shinyjs::reset("form")
+        shinyjs::show("form")
+        shinyjs::hide("thankyou_msg")
+      })    
     })
   }
 )
