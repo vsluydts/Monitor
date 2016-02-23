@@ -49,9 +49,10 @@ shinyApp(
       
       selectInput("name", labelMandatory("Naam van de waarnemer"), c("","Els",  "Rob", "Amber")),
       selectInput("gewas", labelMandatory("Gewas in de serre"), c("Tomaten",  "Paprika's", "Ander")),
-      sliderInput("Row", "Aantal rijen in de serre", 0, 25, 2, ticks = FALSE),
+      sliderInput("Row", "Rijnummer", 0, 100, 2, ticks = T),
+      sliderInput("VangNr", "Vangplaat of Paal nummer binnen een rij", 0,30,2,ticks=T),
       selectInput("plagen", "Plaagsoort die geteld wordt", c("Witte Vlieg",  "Spint", "Ander")),
-      numericInput("count", label = h3("Aantal"), value = 1),
+      numericInput("count", label = "Aantal", value = 1),
       #textInput("name", "Naam van de andere soort", ""),
       actionButton("submit", "Submit", class = "btn-primary")
       )
